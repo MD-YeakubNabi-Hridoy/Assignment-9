@@ -1,10 +1,12 @@
+import Slider from "../Components/Swiper/Slider";
+
 
 const Home = () => {
     return (
         <div>
-            <h1>This is my Real State Website</h1>
+            <Slider />
         </div>
-    );
+    )
 };
 
 export default Home;

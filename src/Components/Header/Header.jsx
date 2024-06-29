@@ -35,7 +35,7 @@ const Header = () => {
                         </li>
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex">
-                        <button className="self-center px-8 py-3 font-bold rounded-lg bg-orange-500 text-white">Log In</button>
+                        <NavLink to={"/login"}><button className="self-center px-8 py-3 font-bold rounded-lg bg-orange-500 text-white">Log In</button></NavLink>
                     </div>
 
                 </div>

@@ -12,6 +12,9 @@ import ErrorPage from './Pages/ErrorPage';
 import { Root } from 'postcss';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
+import ForgotPassword from './Pages/ForgotPassword';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
         path: '/contact',
         element: <Contact />
       },
+      {
+        path: '/login',
+        element: <SignIn />
+      },
+      {
+        path: '/signup',
+        element: <SignUp />
+      },
+      {
+        path: '/forgotpassword',
+        element: <ForgotPassword />
+      }
     ]
   },
 ]);

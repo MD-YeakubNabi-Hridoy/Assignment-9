@@ -1,7 +1,21 @@
 import { NavLink } from "react-router-dom";
 import { RiMenu2Fill } from "react-icons/ri";
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Header = () => {
+    const [pageState, setPageState] = useState("Log In");
+    const auth = getAuth();
+    
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if(user){
+                setPageState("Profile")
+            }else{
+                setPageState("Log In")
+            }
+        })
+    }, [auth])
     return (
         <div className='px-10 shadow-lg'>
             <header className="p-2">
@@ -35,7 +49,9 @@ const Header = () => {
                         </li>
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex">
-                        <NavLink to={"/login"}><button className="self-center px-8 py-3 font-bold rounded-lg bg-orange-500 text-white">Log In</button></NavLink>
+                        <NavLink to={"/profile"}>
+                        <button className="self-center px-8 py-3 font-bold rounded-lg bg-orange-500 text-white">{pageState}
+                        </button></NavLink>
                     </div>
 
                 </div>

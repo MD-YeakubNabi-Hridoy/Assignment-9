@@ -1,6 +1,6 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import { doc, updateDoc } from "firebase/firestore";
-import {db} from "../firebase"
+// import { doc, updateDoc } from "firebase/firestore";
+// import {db} from "../firebase"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -34,10 +34,10 @@ const Profile = () => {
                     displayName : name
                 });
                 
-                const docRef = doc(db, "user", auth.currentUser.uid);
-                await updateDoc(docRef, {
-                    name,
-                })
+                // const docRef = doc(db, "user", auth.currentUser.uid);
+                // await updateDoc(docRef, {
+                //     name,
+                // })
             }
             toast.success("Your Profile is Updated");
         } catch (error) {

@@ -1,8 +1,10 @@
 import { CgEye, CgProfile } from "react-icons/cg";
 import { IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import OAuth from "../Components/OAuth/OAuth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,11 +22,28 @@ const SignIn = () => {
             [e.target.id] : e.target.value,
         }));
     }
+
+    const navigate = useNavigate();
+    async function onSubmit(e){
+        e.preventDefault();
+
+        try {
+            const auth = getAuth();
+            const userCredintial = await signInWithEmailAndPassword(auth, email, password);
+
+            if(userCredintial.user){
+                toast.success("Successfully SignIn!!")
+                navigate("/");
+            }
+        } catch (error) {
+            toast.error("bad user credintial");
+        }
+    }
     return (
         <div className="flex flex-col justify-center items-center h-[81vh]">
             <div className="w-[400px] flex flex-col items-center border-2 border-orange-400 p-6 rounded-xl bg-orange-50">
                 <div className="text-8xl text-orange-500">< CgProfile /></div>
-                <form action="" className="w-full">
+                <form onSubmit={onSubmit} action="" className="w-full">
                     <input
                     onChange={onChange}
                     value={email}

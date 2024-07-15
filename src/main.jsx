@@ -17,6 +17,8 @@ import SignUp from './Pages/SignUp';
 import ForgotPassword from './Pages/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Profile from './Pages/Profile';
+import PrivateRoute from './Components/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,16 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />
+      },
+      {
+        path: "/profile",
+        element: <PrivateRoute />,
+        children:[
+          {
+            path: "/profile",
+            element: <Profile />
+          }
+        ]
       },
       {
         path: '/about',
@@ -51,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: '/forgotpassword',
         element: <ForgotPassword />
-      }
+      },
     ]
   },
 
@@ -71,6 +83,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       draggable
       pauseOnHover
       theme="dark"
-      transition:Bounce/>
+      transition:Bounce />
   </React.StrictMode>,
 )

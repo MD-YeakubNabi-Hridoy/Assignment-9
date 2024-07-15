@@ -53,7 +53,6 @@ const Header = () => {
                         <button className="self-center px-8 py-3 font-bold rounded-lg bg-orange-500 text-white">{pageState}
                         </button></NavLink>
                     </div>
-
                 </div>
             </header>
         </div>

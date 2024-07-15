@@ -2,7 +2,8 @@ import { getAuth, updateProfile } from "firebase/auth";
 // import { doc, updateDoc } from "firebase/firestore";
 // import {db} from "../firebase"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Profile = () => {
@@ -27,13 +28,13 @@ const Profile = () => {
         }))
     }
 
-    async function onSubmit(){
+    async function onSubmit() {
         try {
-            if(auth.currentUser.displayName !== name){
+            if (auth.currentUser.displayName !== name) {
                 await updateProfile(auth.currentUser, {
-                    displayName : name
+                    displayName: name
                 });
-                
+
                 // const docRef = doc(db, "user", auth.currentUser.uid);
                 // await updateDoc(docRef, {
                 //     name,
@@ -68,6 +69,11 @@ const Profile = () => {
                             <p onClick={onLogOut} className="text-blue-600 hover:text-blue-800 transition ease-in-out duration-200 cursor-pointer">Sign Out</p>
                         </div>
                     </form>
+                    <div className="">
+                        <Link to={"/"} >
+                            <h1 className="flex justify-center gap-4 items-center text-3xl font-bold bg-orange-500 hover:bg-orange-600 tansition duration-200 ease-in-out cursor-pointer text-center p-3 mt-8 rounded-lg text-white">Go to Home <FaHome /> </h1>
+                        </Link>
+                    </div>
                 </div>
             </section>
         </>
